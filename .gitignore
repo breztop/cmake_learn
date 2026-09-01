@@ -1,0 +1,16 @@
+/build/
+/install/
+/packages/
+/_deps/
+/.cache/
+**/build/
+**/CMakeUserPresets.json
+**/__pycache__/
+*.user
+*.log
+*.zip
+*.exe
+*.dll
+*.a
+*.obj
+*.o
