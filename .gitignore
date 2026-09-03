@@ -14,3 +14,15 @@
 *.a
 *.obj
 *.o
+
+/docs/
+/archive/
+/assets/
+/validation/
+/series.json
+/review-manifest.json
+*.[mM][dD]
+!/README.md
+/scripts/check_links.py
+/scripts/render_diagrams.py
+/scripts/verify_articles.py
