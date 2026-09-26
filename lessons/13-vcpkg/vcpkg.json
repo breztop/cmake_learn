@@ -1,0 +1,8 @@
+{
+  "name": "assetlens-lesson",
+  "version-string": "1.0.0",
+  "dependencies": [
+    "fmt"
+  ],
+  "builtin-baseline": "f7423ee180c4b7f40d43402c2feb3859161ef625"
+}
