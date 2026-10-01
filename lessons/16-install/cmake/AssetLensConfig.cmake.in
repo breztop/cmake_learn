@@ -1,0 +1,7 @@
+@PACKAGE_INIT@
+include(CMakeFindDependencyMacro)
+if(@ASSETLENS_USE_FMT@)
+  find_dependency(fmt 10.2.1 CONFIG)
+endif()
+include("${CMAKE_CURRENT_LIST_DIR}/AssetLensTargets.cmake")
+check_required_components(AssetLens)
