@@ -1,0 +1,8 @@
+file(READ "${INPUT}" revision)
+string(STRIP "${revision}" revision)
+if(NOT revision MATCHES "^[0-9]+$")
+  message(FATAL_ERROR "schema.txt must contain an integer")
+endif()
+get_filename_component(output_dir "${OUTPUT}" DIRECTORY)
+file(MAKE_DIRECTORY "${output_dir}")
+file(WRITE "${OUTPUT}" "#pragma once\n#define ASSETLENS_SCHEMA_REVISION ${revision}\n")
