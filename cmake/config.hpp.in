@@ -1,0 +1,3 @@
+#pragma once
+#define ASSETLENS_VERSION "@PROJECT_VERSION@"
+#cmakedefine01 ASSETLENS_ENABLE_JSON
