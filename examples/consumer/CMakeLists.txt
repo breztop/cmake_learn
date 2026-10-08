@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.28)
+project(AssetLensConsumer LANGUAGES CXX)
+find_package(AssetLens 1 CONFIG REQUIRED)
+add_executable(consumer main.cpp)
+target_link_libraries(consumer PRIVATE AssetLens::core)
+enable_testing()
+add_test(NAME consumer.run COMMAND consumer "${CMAKE_CURRENT_SOURCE_DIR}/../../data/sample")
+set_tests_properties(consumer.run PROPERTIES PASS_REGULAR_EXPRESSION "files=3 bytes=22 skipped=0")
