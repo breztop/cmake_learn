@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.28)
+project(PrivateInclude LANGUAGES CXX)
+add_library(core STATIC core.cpp)
+target_include_directories(core PRIVATE include)
+add_executable(client main.cpp)
+target_link_libraries(client PRIVATE core)
