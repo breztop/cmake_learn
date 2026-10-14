@@ -1,0 +1,24 @@
+name: build-and-test
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+        build_type: [Debug, Release]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+      - name: Build
+        run: cmake --build build/ci --config ${{ matrix.build_type }} --parallel 2
+      - name: Test
+        run: ctest --test-dir build/ci -C ${{ matrix.build_type }} --output-on-failure
+      - name: Check all chapter examples
+        run: python scripts/verify.py --offline --config ${{ matrix.build_type }}
+      - name: Package
+        run: cpack --config build/ci/CPackConfig.cmake -C ${{ matrix.build_type }} -B packages
